@@ -1,6 +1,6 @@
 var React = require('react');
 var Header = require('components/core-components/header');
-var NavigationBar = require('components/core-components/navigation-bar');
+var NavigationStore = require('components/application-components/manage-data-store/navigation-store');
 var AddProductForm = require('components/application-components/manage-data-store/add-product-form');
 var ManageStoreProduct = require('components/application-components/manage-data-store/manage-store-product');
 var storeProductApi = require('services/store-product/store-product-api');
@@ -11,22 +11,21 @@ var ManageStoreIndexPage = React.createClass({
     getInitialState: function() {
         return {
             products: '',
-            login: false
+            login: true,
+            create: false
         };
     },
 
     componentWillMount: function () {
         var productsObj = storeProductApi({
             method: 'GET',
-            url: 'http://localhost/my-profile/api/product/read.php'
+            url: 'http://localhost/concepto/api/news/read.php'
         });
 
         return this.setState({products: JSON.parse(productsObj)})
     },
 
     render: function () {
-
-        console.log('login', this.state.login)
         return (
             <div className="manage-store">
                 <LoginStore login={this.loginStore}/>
@@ -48,15 +47,30 @@ var ManageStoreIndexPage = React.createClass({
             manageStoreLayout = (
                 <div>
                     <Header className="header">LOGOOOO
-                        <NavigationBar>Navigation</NavigationBar>
+                        <NavigationStore action={this.showCreateForm} >Navigation</NavigationStore>
                     </Header>
-                    <AddProductForm>form</AddProductForm>
+                    {this.renderCreateNews()}
                     <ManageStoreProduct>{ProductStore}</ManageStoreProduct>
                 </div>
             );
         }
 
         return manageStoreLayout;
+    },
+
+    showCreateForm: function () {
+        this.setState({create: true})
+    },
+
+    renderCreateNews: function () {
+        console.log('stateeee',this.state.create);
+        var newsForm = null;
+
+        if (this.state.create) {
+            newsForm = (<AddProductForm>form</AddProductForm>);
+        }
+
+        return newsForm;
     }
 });
 

@@ -8,31 +8,33 @@ var ProductItem = React.createClass({
 
         return (
             <div className="product-item">
-                {this.renderName(products)}
-                {this.renderDescription(products)}
-                {this.renderPrice(products)}
+                {this.renderTitle(products)}
+                {this.renderSubtitle(products)}
+                {this.renderImg(products)}
                 {this.renderActionBar(products)}
             </div>
         );
     },
 
-    renderName: function (products) {
-        return <div>{products.name}</div>;
+    renderTitle: function (products) {
+        return <div>{products.title}</div>;
     },
 
-    renderDescription: function (products) {
-        return <div>{products.description}</div>;
+    renderSubtitle: function (products) {
+        return <div>{products.subtitle}</div>;
     },
 
-    renderPrice: function (products) {
-        return <div>{products.price}</div>;
+    renderImg: function (products) {
+        return <div>
+                    <img src={products.img} width="100px"/>
+               </div>;
     },
 
     renderActionBar: function (products) {
         var productId = products.id;
-        var productName = products.name;
+        var productTitle = products.title;
 
-        return <StoreActionBar id={productId} name={productName}/>
+        return <StoreActionBar id={productId} title={productTitle}/>
     }
 });
 

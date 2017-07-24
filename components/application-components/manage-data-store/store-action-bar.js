@@ -36,7 +36,7 @@ var StoreActionBar = React.createClass({
             closeMe: this.closeModal,
             disable: this.state.showModal,
             confirm: this.deleteItem,
-            name: this.props.name,
+            title: this.props.title,
             id: this.props.id
         }
     },
@@ -57,7 +57,7 @@ var StoreActionBar = React.createClass({
         var productId = this.props.id;
 
         storeProductApi({
-            url: "http://localhost/my-profile/api/product/delete.php",
+            url: "http://localhost/concepto/api/news/delete.php",
             method: "POST"
         }, JSON.stringify({id: productId}));
 

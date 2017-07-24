@@ -11,8 +11,6 @@ var LoginStore = React.createClass({
     },
 
     render: function () {
-      console.log('aaaa',this.props);
-      console.log('bbbbb', this.state.validated)
         return (
             <div className="login-store">
                 <p>login form</p>

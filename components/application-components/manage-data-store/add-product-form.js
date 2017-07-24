@@ -5,9 +5,12 @@ var AddProductForm = React.createClass ({
 
     getInitialState: function () {
         return {
-            name: '',
+            title: '',
+            subtitle: '',
             description: '',
-            price: '',
+            paragraph: '',
+            img: '',
+            epigraph: '',
             category_id: 0
         };
     },
@@ -15,35 +18,60 @@ var AddProductForm = React.createClass ({
     render: function () {
         return (
             <div className="add-product-form">
+
+                <form action="api/news/file.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="Buscar imagen" id="archivo" />
+                    <input type="submit" value="Subir archivo" />
+                </form>
                 <form onSubmit={this.pushData}>
-                    <input type='text' required onChange={this.onNameChange} />
+                    <span>Titulo:</span><input type='text' required onChange={this.onTitleChange} />
+                    <span>Subtitulo:</span><input type='text' required onChange={this.onSubtitleChange} />
                     <input type='text' required onChange={this.onDescriptionChange} />
-                    <input type='text' placeholder="pone el precio" required onChange={this.onPriceChange} />
+                    <input type='text' required onChange={this.onParagraphChange} />
+                    <input id="imagen" name="imagen" type="file" onChange={this.onImgChange}/>
                     <button type="submit">Crear</button>
                 </form>
+
             </div>
         );
     },
 
-    onNameChange: function(e) {
-        this.setState({name: e.target.value});
+    onTitleChange: function(e) {
+        this.setState({title: e.target.value});
+    },
+
+    onSubtitleChange: function(e) {
+        this.setState({subtitle: e.target.value});
     },
 
     onDescriptionChange: function(e) {
         this.setState({description: e.target.value});
     },
 
-    onPriceChange: function(e) {
-        this.setState({price: e.target.value});
+    onParagraphChange: function(e) {
+        this.setState({paragraph: e.target.value});
     },
 
-    pushData: function (event) {
+    onImgChange: function (e) {
+        this.setState({img: e.target.value})
+    },
+
+    pushData: function () {
         var newProduct = this.state;
 
         storeProductApi({
-            url: "http://localhost/concepto-actual/api/news/create.php",
+            url: "http://localhost/concepto/api/news/create.php",
             method: "POST"
         }, JSON.stringify(newProduct))
+    },
+
+    postImg: function () {
+        var file = this.state;
+
+        storeProductApi({
+            url: "http://localhost/concepto/api/news/images.php",
+            method: "POST"
+        }, file)
     }
 
 });
