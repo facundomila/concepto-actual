@@ -1,4 +1,5 @@
 var ProductList = require('components/common-components/product-list');
+var ProductItem = require('components/common-components/product-item');
 var React = require('react');
 
 var ManageStoreProduct = React.createClass({
@@ -8,6 +9,7 @@ var ManageStoreProduct = React.createClass({
 
         return (
             <div className="manage-store-product">
+                <div className="manage-store-product-head"></div>
                 <ProductList key="index">
                     {ProductStore}
                 </ProductList>

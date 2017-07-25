@@ -1,3 +1,4 @@
+var $ = require('jquery');
 var React = require('react');
 var Header = require('components/core-components/header');
 var NavigationStore = require('components/application-components/manage-data-store/navigation-store');
@@ -11,7 +12,7 @@ var ManageStoreIndexPage = React.createClass({
     getInitialState: function() {
         return {
             products: '',
-            login: true,
+            loggedin: false,
             create: false
         };
     },
@@ -19,7 +20,7 @@ var ManageStoreIndexPage = React.createClass({
     componentWillMount: function () {
         var productsObj = storeProductApi({
             method: 'GET',
-            url: 'http://localhost/concepto/api/news/read.php'
+            url: 'http://conceptoactual.com.ar/api/news/read.php'
         });
 
         return this.setState({products: JSON.parse(productsObj)})
@@ -28,14 +29,18 @@ var ManageStoreIndexPage = React.createClass({
     render: function () {
         return (
             <div className="manage-store">
-                <LoginStore login={this.loginStore}/>
+                {this.renderLoginStore()}
                 {this.renderManageStore()}
             </div>
         );
     },
 
+    renderLoginStore: function () {
+        return (this.state.loggedin) ? null : <LoginStore login={this.loginStore} />;
+    },
+
     loginStore: function () {
-      this.setState({login: true})
+      this.setState({loggedin: true})
     },
 
     renderManageStore: function () {
@@ -43,14 +48,16 @@ var ManageStoreIndexPage = React.createClass({
 
         var manageStoreLayout = null;
 
-        if (this.state.login) {
+        if (this.state.loggedin) {
             manageStoreLayout = (
                 <div>
-                    <Header className="header">LOGOOOO
-                        <NavigationStore action={this.showCreateForm} >Navigation</NavigationStore>
+                    <Header className="header">
+                        <NavigationStore action={this.showCreateForm} />
                     </Header>
-                    {this.renderCreateNews()}
-                    <ManageStoreProduct>{ProductStore}</ManageStoreProduct>
+                    <div className="manage-store-main">
+                        {this.renderCreateNews()}
+                        <ManageStoreProduct>{ProductStore}</ManageStoreProduct>
+                    </div>
                 </div>
             );
         }
@@ -63,11 +70,11 @@ var ManageStoreIndexPage = React.createClass({
     },
 
     renderCreateNews: function () {
-        console.log('stateeee',this.state.create);
         var newsForm = null;
 
         if (this.state.create) {
-            newsForm = (<AddProductForm>form</AddProductForm>);
+            newsForm = (
+                <AddProductForm>form</AddProductForm>);
         }
 
         return newsForm;

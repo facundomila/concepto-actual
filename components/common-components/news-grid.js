@@ -1,22 +1,22 @@
 var _ = require('lodash');
-var ProductItem = require('components/common-components/product-item');
+var NewItem = require('components/common-components/new-item');
 var React = require('react');
 
-var ProductList = React.createClass({
+var NewsGrid = React.createClass({
 
     render: function () {
-        var products = this.props.children;
+        var news = this.props.children;
 
         return (
             <div className="product-list">
-                {_.map(products, this.renderItems)}
+                {_.map(news, this.renderItems)}
             </div>
         );
     },
 
-    renderItems: function (product, key) {
-        return <ProductItem key={key}>{product}</ProductItem>;
+    renderItems: function (news, key) {
+        return <NewItem key={key}>{news}</NewItem>;
     }
 });
 
-module.exports = ProductList;
+module.exports = NewsGrid;

@@ -8,7 +8,7 @@ var Header = React.createClass({
             <div className="header">
                 <img className="header-logo" src="images/iso_blanco.png" />
                 <div className="header-navigation">
-                  <NavigationBar />
+                    {this.props.children}
                 </div>
             </div>
         );

@@ -1,0 +1,10 @@
+@import 'styles/globals';
+
+.manage-store {
+
+  &-main {
+    background-color: $color-primary;
+    width: 100%;
+    height: 1200px;
+  }
+}

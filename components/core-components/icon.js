@@ -25,8 +25,8 @@ var Icon = React.createClass({
             view: <IconView />,
             delete: <IconDelete />,
             facebook: <IconFacebook />,
-            facebook: <IconLinkedin />,
-            facebook: <IconWhatsapp />,
+            linkedin: <IconLinkedin />,
+            whatsapp: <IconWhatsapp />,
             twitter: <IconTwitter />
         };
 

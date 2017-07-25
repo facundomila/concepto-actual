@@ -13,11 +13,11 @@ var LoginStore = React.createClass({
     render: function () {
         return (
             <div className="login-store">
-                <p>login form</p>
+                <p>Ingrese nombre de usuario y contraseña</p>
                 <form>
-                  <input type="text" required onChange={this.onUserChange}/>
-                  <input type="text" required onChange={this.onPassChange}/>
-                  <button onClick={this.validateUsers}>Login</button>
+                  <input className="login-store-input" placeholder="Ingrese nombre de usuario" type="text" required onChange={this.onUserChange}/>
+                  <input className="login-store-input" placeholder="Ingrese la contraseña" type="password" required onChange={this.onPassChange}/>
+                  <button className="login-store-button" onClick={this.validateUsers}>Login</button>
                 </form>
             </div>
         );
@@ -42,7 +42,8 @@ var LoginStore = React.createClass({
       } else if (user === 'nicolas.admin' && pass === 'concepto123') {
           console.log('validado');
           this.setState({validated: true});
-          this.props.login()
+          this.props.login();
+          this.props.class
       } else {
         alert('Los datos ingresados son incorrectos');
       }

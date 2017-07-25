@@ -29,7 +29,8 @@ var Button = React.createClass({
             'button-add': (this.props.buttonType === 'add'),
             'button-view': (this.props.buttonType === 'view'),
             'button-edit': (this.props.buttonType === 'edit'),
-            'button-delete': (this.props.buttonType === 'delete')
+            'button-delete': (this.props.buttonType === 'delete'),
+            'button-logout': (this.props.buttonType === 'logout')
         })
     }
 });

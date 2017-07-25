@@ -8,9 +8,28 @@
     font-size: 14px;
     text-decoration: none;
     padding: 10px;
+
+    &--vertical {
+      color: white;
+      font-size: 14px;
+      text-decoration: none;
+      padding: 10px;
+      float: left;
+    }
+    &--vertical:hover {
+      color: $color-secondary;
+    }
   }
 
   &-links:hover {
     color: $color-secondary;
+  }
+
+  &--horizontal {
+
+  }
+
+  &--vertical {
+    width: 260px;
   }
 }

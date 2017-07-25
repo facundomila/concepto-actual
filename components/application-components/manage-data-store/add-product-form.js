@@ -60,7 +60,7 @@ var AddProductForm = React.createClass ({
         var newProduct = this.state;
 
         storeProductApi({
-            url: "http://localhost/concepto/api/news/create.php",
+            url: "http://conceptoactual.com.ar/api/news/create.php",
             method: "POST"
         }, JSON.stringify(newProduct))
     },
@@ -69,7 +69,7 @@ var AddProductForm = React.createClass ({
         var file = this.state;
 
         storeProductApi({
-            url: "http://localhost/concepto/api/news/images.php",
+            url: "http://conceptoactual.com.ar/api/news/images.php",
             method: "POST"
         }, file)
     }
