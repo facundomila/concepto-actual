@@ -1,12 +1,17 @@
 var React = require('react');
+var Link = require('components/core-components/link');
 var NavigationBar = require('components/core-components/navigation-bar')
 
-var Header = React.createClass({
+var Footer = React.createClass({
 
     render: function () {
         return (
-            <div className="header">
+            <div className="footer">
                 <img className="header-logo" src="images/iso_blanco.png" />
+                <Link linkType="facebook"/>
+                <Link linkType="whatsapp"/>
+                <Link linkType="twitter"/>
+                <Link linkType="linkedin"/>
                 <div className="header-navigation">
                   <NavigationBar />
                 </div>
@@ -15,4 +20,4 @@ var Header = React.createClass({
     }
 });
 
-module.exports = Header;
+module.exports = Footer;

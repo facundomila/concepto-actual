@@ -1,0 +1,10 @@
+@import 'styles/globals';
+
+.footer {
+  color: $color-primary;
+  position: absolute;
+  right: 0;
+  left: 0;
+  padding: 20px;
+  background-color: $background-color;
+}
