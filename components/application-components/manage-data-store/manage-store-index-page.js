@@ -5,7 +5,6 @@ var NavigationStore = require('components/application-components/manage-data-sto
 var AddProductForm = require('components/application-components/manage-data-store/add-product-form');
 var ManageStoreProduct = require('components/application-components/manage-data-store/manage-store-product');
 var storeProductApi = require('services/store-product/store-product-api');
-var LoginStore = require('components/application-components/manage-data-store/login-store');
 
 var ManageStoreIndexPage = React.createClass({
 
@@ -29,18 +28,9 @@ var ManageStoreIndexPage = React.createClass({
     render: function () {
         return (
             <div className="manage-store">
-                {this.renderLoginStore()}
                 {this.renderManageStore()}
             </div>
         );
-    },
-
-    renderLoginStore: function () {
-        return (this.state.loggedin) ? null : <LoginStore login={this.loginStore} />;
-    },
-
-    loginStore: function () {
-      this.setState({loggedin: true})
     },
 
     renderManageStore: function () {

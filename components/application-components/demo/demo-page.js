@@ -3,6 +3,7 @@ var Footer = require('components/core-components/footer');
 var Header = require('components/core-components/header');
 var storeProductApi = require('services/store-product/store-product-api');
 var NewsGrid = require('components/common-components/news-grid');
+var Logo = require('components/core-components/logo');
 
 var DemoPage = React.createClass({
 
@@ -26,7 +27,9 @@ var DemoPage = React.createClass({
 
         return (
             <div className="demo-page">
-              <Header />
+              <Header>
+                <Logo />
+              </Header>
               <div className="demo-page-main">
                 <NewsGrid>{NewsStore}</NewsGrid>
               </div>
