@@ -1,14 +1,3 @@
-<?php
-
-session_start();
-
-if(!isset($_SESSION['usuario'])){
-   header("location:login.html");
-} else {
-    echo "Hola " . $_SESSION['usuario'];
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

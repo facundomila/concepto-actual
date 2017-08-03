@@ -19,21 +19,43 @@ var AddProductForm = React.createClass ({
         return (
             <div className="add-product-form">
 
-                <form action="api/news/file.php" method="post" enctype="multipart/form-data">
-                    <input type="file" name="Buscar imagen" id="archivo" />
-                    <input type="submit" value="Subir archivo" />
+                <form action={this.uploadFiles} id="form_subir">
+                    <div className="add-product-form-file">
+                      <input type="file" name="archivo" required/>
+                      <input type="submit" value="Subir archivo" />
+                    </div>
                 </form>
+
                 <form onSubmit={this.pushData}>
-                    <span>Titulo:</span><input type='text' required onChange={this.onTitleChange} />
-                    <span>Subtitulo:</span><input type='text' required onChange={this.onSubtitleChange} />
-                    <input type='text' required onChange={this.onDescriptionChange} />
-                    <input type='text' required onChange={this.onParagraphChange} />
-                    <input id="imagen" name="imagen" type="file" onChange={this.onImgChange}/>
+                    <div className="add-product-form-title">
+                      Titulo:<input type='text' required onChange={this.onTitleChange} />
+                    </div>
+                    <div className="add-product-form-subtitle">
+                      Subtitulo:<input type='text' required onChange={this.onSubtitleChange} />
+                    </div>
+                    <div className="add-product-form-description">
+                      Descripcion: <input type='text' required onChange={this.onDescriptionChange} />
+                    </div>
+                    <div className="add-product-form-paragraph">
+                      Cuerpo de noticia: <input type='text' required onChange={this.onParagraphChange} />
+                    </div>
+                    <div className="add-product-form-image">
+                      Imagen principal: <input id="imagen" name="imagen" type="file" onChange={this.onImgChange}/>
+                    </div>
                     <button type="submit">Crear</button>
                 </form>
 
             </div>
         );
+    },
+
+    pushData: function (file) {
+      console.log('aaa', file)
+      debugger;
+        storeProductApi({
+            url: "http://conceptoactual.com.ar/cpanel/subir.php",
+            method: "POST"
+        }, file)
     },
 
     onTitleChange: function(e) {

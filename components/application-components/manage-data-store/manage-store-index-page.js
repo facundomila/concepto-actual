@@ -11,8 +11,7 @@ var ManageStoreIndexPage = React.createClass({
     getInitialState: function() {
         return {
             products: '',
-            loggedin: false,
-            create: false
+            create: true
         };
     },
 
@@ -26,33 +25,19 @@ var ManageStoreIndexPage = React.createClass({
     },
 
     render: function () {
-        return (
-            <div className="manage-store">
-                {this.renderManageStore()}
-            </div>
-        );
-    },
-
-    renderManageStore: function () {
         var ProductStore = this.state.products.records;
 
-        var manageStoreLayout = null;
-
-        if (this.state.loggedin) {
-            manageStoreLayout = (
-                <div>
-                    <Header className="header">
-                        <NavigationStore action={this.showCreateForm} />
-                    </Header>
-                    <div className="manage-store-main">
-                        {this.renderCreateNews()}
-                        <ManageStoreProduct>{ProductStore}</ManageStoreProduct>
-                    </div>
+        return (
+            <div className="manage-store">
+                <Header className="header">
+                  <NavigationStore action={this.showCreateForm} />
+                </Header>
+                <div className="manage-store-main">
+                  {this.renderCreateNews()}
+                  <ManageStoreProduct>{ProductStore}</ManageStoreProduct>
                 </div>
-            );
-        }
-
-        return manageStoreLayout;
+            </div>
+        );
     },
 
     showCreateForm: function () {
