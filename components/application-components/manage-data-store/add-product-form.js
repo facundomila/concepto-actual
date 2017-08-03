@@ -19,8 +19,9 @@ var AddProductForm = React.createClass ({
         return (
             <div className="add-product-form">
 
-                <form action={this.uploadFiles} id="form_subir">
+                <form action="http://conceptoactual.com.ar/cpanel/image_up/recibir.php" method="POST" enctype="multipart/form-data">
                     <div className="add-product-form-file">
+                      <input type="text" name="title" required/>
                       <input type="file" name="archivo" required/>
                       <input type="submit" value="Subir archivo" />
                     </div>
